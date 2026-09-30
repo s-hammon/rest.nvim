@@ -2,9 +2,8 @@
 
 # rest.nvim
 
-![License](https://img.shields.io/github/license/NTBBloodbath/rest.nvim?style=for-the-badge)
+![License](https://img.shields.io/github/license/s-hammon/rest.nvim?style=for-the-badge)
 ![Neovim version](https://img.shields.io/badge/Neovim%200.10.1+-brightgreen?style=for-the-badge)
-[![LuaRocks](https://img.shields.io/luarocks/v/NTBBloodbath/rest.nvim?style=for-the-badge&logo=lua&color=blue)](https://luarocks.org/modules/NTBBloodbath/rest.nvim)
 
 [Features](#features) • [Install](#install) • [Usage](#usage) • [Contribute](#contribute)
 
@@ -28,7 +27,7 @@ CLI.
 
 > [!IMPORTANT]
 >
-> If you are facing issues, please [report them](https://github.com/rest-nvim/rest.nvim/issues/new) so we can work in a fix together :)
+> If you are facing issues, please [report them](https://github.com/s-hammon/rest.nvim/issues/new) so we can work in a fix together :)
 
 ## Features
 
@@ -65,7 +64,7 @@ CLI.
 
 ```lua
 {
-  "rest-nvim/rest.nvim",
+  "s-hammon/rest.nvim",
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     opts = function (_, opts)
@@ -85,7 +84,7 @@ CLI.
 <!---->
 <!-- ```lua -->
 <!-- use { -->
-<!--   "rest-nvim/rest.nvim", -->
+<!--   "s-hammon/rest.nvim", -->
 <!--   rocks = { "nvim-nio", "mimetypes", "xml2lua", "fidget.nvim", "tree-sitter-http" }, -->
 <!-- } -->
 <!-- ``` -->
@@ -319,7 +318,7 @@ require("telescope").extensions.rest.select_env()
 
 Here is a preview of the extension working :)
 
-![telescope rest extension demo](https://github.com/rest-nvim/rest.nvim/assets/36456999/a810954f-b45c-44ee-854d-94039de8e2fc)
+![telescope rest extension demo](https://github.com/s-hammon/rest.nvim/assets/36456999/a810954f-b45c-44ee-854d-94039de8e2fc)
 
 #### Mappings
 
@@ -362,11 +361,11 @@ And don't worry, it will only show up under HTTP files.
 
 Here is a preview of the component working :)
 
-![lualine component demo](https://github.com/rest-nvim/rest.nvim/assets/81607010/cf4bb327-61aa-494c-84a5-82f5ee21004f)
+![lualine component demo](https://github.com/s-hammon/rest.nvim/assets/81607010/cf4bb327-61aa-494c-84a5-82f5ee21004f)
 
 ## Contribute
 
-1. Fork it (https://github.com/rest-nvim/rest.nvim/fork)
+1. Fork it (https://github.com/s-hammon/rest.nvim/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'feat: add some feature'`)
 4. Push to the branch (`git push -u origin my-new-feature`)
