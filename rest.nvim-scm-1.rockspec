@@ -15,7 +15,7 @@ description = {
     A very fast, powerful, extensible and asynchronous Neovim HTTP client written in Lua.
     rest.nvim by default makes use of its own `curl` wrapper to make requests and a tree-sitter parser to parse http files.
   ]],
-  homepage = "https://github.com/rest-nvim/rest.nvim",
+  homepage = "https://github.com/s-hammon/rest.nvim",
   license = "GPLv3",
 }
 
@@ -33,13 +33,13 @@ test_dependencies = {
 }
 
 source = {
-  url = "http://github.com/rest-nvim/rest.nvim/archive/" .. MAJOR .. ".zip",
+  url = "http://github.com/s-hammon/rest.nvim/archive/" .. MAJOR .. ".zip",
   dir = "rest.nvim-" .. MAJOR,
 }
 
 if MAJOR == "scm" then
   source = {
-    url = "git://github.com/rest-nvim/rest.nvim",
+    url = "git://github.com/s-hammon/rest.nvim",
   }
 end
 

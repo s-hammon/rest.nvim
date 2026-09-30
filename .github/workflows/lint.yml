@@ -14,5 +14,5 @@ jobs:
       - uses: nebularg/actions-luacheck@v1.1.2
         with:
           files: 'lua/'
-          config: 'https://raw.githubusercontent.com/NTBBloodbath/rest.nvim/main/.luacheckrc'
+          config: 'https://raw.githubusercontent.com/s-hammon/rest.nvim/main/.luacheckrc'
           annotate: 'error'

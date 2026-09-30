@@ -63,7 +63,7 @@ body:
 
         require("lazy.minit").repro({
             spec = {
-                "rest-nvim/rest.nvim",
+                "s-hammon/rest.nvim",
                 {
                     "nvim-treesitter/nvim-treesitter",
                     build = ":TSUpdate",

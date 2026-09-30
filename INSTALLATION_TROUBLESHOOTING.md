@@ -91,7 +91,7 @@ always install the correct versions of `lua` and `luarocks` for Neovim.
 require("lazy").setup({
     spec = {
         -- ...
-        "rest-nvim/rest.nvim",
+        "s-hammon/rest.nvim",
     },
     rocks = {
         hererocks = true, -- you should enable this to get hererocks support
@@ -109,7 +109,7 @@ See [this issue](https://github.com/rest-nvim/rest.nvim/issues/463) for Windows 
 
 ---
 
-Please [open a new issue](https://github.com/rest-nvim/rest.nvim/issues/new/choose) if you still
+Please [open a new issue](https://github.com/s-hammon/rest.nvim/issues/new/choose) if you still
 have any issue after trying this guide.
 
 [^1]: https://lazy.folke.io/#%EF%B8%8F-requirements
