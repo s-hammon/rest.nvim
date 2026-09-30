@@ -45,15 +45,25 @@ end
 ---@param src string
 ---@param context rest.Context
 ---@return string
----@return integer
 local function expand_variables(src, context)
     -- remove $dotenv tags, which are used by the vscode rest client for cross compatibility
     src = src:gsub("%$dotenv ", ""):gsub("%$DOTENV ", "")
-    return src:gsub("{{(.-)}}", function(name)
+
+    -- NOTE: no more monkeys jumping on the bed!
+    local result = {}
+    local last_pos = 1
+
+    for start_pos, name, end_pos in src:gmatch("(){{(.-)}}()") do
+        table.insert(result, src:sub(last_pos, start_pos - 1))
         name = vim.trim(name)
-        local res = context:resolve(name)
-        return res
-    end)
+        local resolved = context:resolve(name)
+        table.insert(result, resolved)
+
+        last_pos = end_pos
+    end
+
+    table.insert(result, src:sub(last_pos))
+    return table.concat(result)
 end
 
 ---@param req_node TSNode Tree-sitter request node
@@ -71,6 +81,16 @@ local function parse_headers(req_node, source, context)
         key = expand_variables(key, context):lower()
         if value then
             value = expand_variables(value, context)
+
+            if key == "authorization" and vim.startswith(value, "Basic") then
+                local _, _, username, password = string.find(value, "^Basic%s+([^%s:]+)%s(.*)$")
+                if username and password then
+                    -- NOTE: RFC 7617
+                    local encoded = vim.base64.encode(username .. ":" .. password)
+                    value = "Basic " .. encoded
+                end
+            end
+
             table.insert(headers[key], value)
         else
             headers[key] = {}

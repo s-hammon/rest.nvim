@@ -23,6 +23,9 @@ your editor!
 In addition to this, you can also write integrations with external HTTP clients, such as the postman
 CLI.
 
+> [!NOTE]
+> This repository is a fork of the original [rest-nvim/rest.nvim](https://github.com/rest-nvim/rest.nvim) project starting from v1.34.0+, maintained with independent development, performance optimizations, and enhanced features.
+
 > [!IMPORTANT]
 >
 > If you are facing issues, please [report them](https://github.com/rest-nvim/rest.nvim/issues/new) so we can work in a fix together :)
@@ -32,6 +35,7 @@ CLI.
 - Easy to use
 - Friendly, organized and featureful request results window
 - Fast runtime with statistics about your request
+- Built-in OAuth 2.0 Client Credentials flow (`{{$auth.oauth2}}`) and RFC 7617 Basic Auth encoding
 - Set custom pre-request and post-request hooks to dynamically interact with the data
 - Easily set environment variables based on the response to re-use the data later
 - Tree-sitter based parsing and syntax highlighting for speed and perfect accuracy
@@ -229,6 +233,34 @@ Request-Body
 > rest.nvim follows [intellij's http client spec](https://www.jetbrains.com/help/idea/exploring-http-syntax.html)
 > for `.http` file syntax. You can find examples of use in the [spec/examples](./spec/examples)
 > directory.
+
+### Authentication
+
+#### OAuth 2.0 Client Credentials
+`rest.nvim` supports automatic OAuth 2.0 token acquisition via the `{{$auth.oauth2}}` dynamic variable.
+
+Define your OAuth 2.0 credentials in your `.env` file or environment:
+```env
+TOKEN_URL=https://auth.example.com/oauth/token
+CLIENT_ID=your_client_id
+CLIENT_SECRET=your_client_secret
+```
+
+Then reference `{{$auth.oauth2}}` in your `.http` file:
+```http
+GET https://api.example.com/v1/resource
+Authorization: Bearer {{$auth.oauth2}}
+```
+
+Tokens are automatically fetched asynchronously via `curl` and cached in memory until shortly before expiration.
+
+#### Basic Authentication (RFC 7617)
+Provide raw `username password` credentials in your request header; `rest.nvim` automatically base64-encodes them into standard `Basic <base64>` header format:
+
+```http
+GET https://api.example.com/v1/resource
+Authorization: Basic admin mysecretpassword
+```
 
 ### Keybindings
 

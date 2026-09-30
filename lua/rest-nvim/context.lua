@@ -112,6 +112,17 @@ function Context:resolve(key)
     -- find from dynamic variables
     if vim.startswith(key, "$") then
         logger.debug("resolving dynamic variable:", key)
+        local var_name = key:sub(2)
+
+        if var_name == "auth.oauth2" then
+            local token_url = self:resolve("TOKEN_URL")
+            local client_id = self:resolve("CLIENT_ID")
+            local client_secret = self:resolve("CLIENT_SECRET")
+
+            local auth = require("rest-nvim.auth")
+            return auth.oauth2_client_credentials(token_url, client_id, client_secret)
+        end
+
         local var = get_dynamic_vars(key:sub(2))
         return var and var() or ""
     end
